@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ng-model Initialize </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller='myCtrl'>
+        <p>Value of input is initialized</p>
+        <p>
+            <Input type="text" ng-model="myinput">
+        </p>
+        <p>My Input is {{ myinput }}</p>
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller('myCtrl', function ($scope) {
+                $scope.myinput = 'Change this';
+            });
+        </script>
+    </div>
+</body>
+
+</html>
