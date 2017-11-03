@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List of Movies</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller='myCtrl'>
+
+        <h3>Movies</h3>
+        <p>Demonstrates loading a list, adding and removing items from the list, and error handling.</p>
+
+        <table>
+            <tr>
+                <td>Title</td>
+                <td>Year</td>
+            </tr>
+            <tr>
+                <td><input ng-model="addMovie.title"></td>
+                <td><input ng-model="addMovie.year"></td>
+            </tr>
+        </table>
+        <button ng-click="addthis()">Add</button>
+
+        <li ng-repeat='movie in movies track by $index'>{{movie.title}} ({{ movie.year }})
+            <button ng-click='removeThis()'>-</button>
+        </li>
+
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller('myCtrl', function ($scope, $window) {
+
+                $scope.movies = [
+                    { title: 'The Matrix', year: '1999' },
+                    { title: 'The Matrix Reloaded', year: '2003' },
+                    { title: 'The Matrix Revolutions', year: '2003' }
+                ];
+
+                $scope.addthis = function () {
+                    var new_entry = $scope.addMovie;
+                    if (new_entry) {
+                        if ((new_entry.title) && (new_entry.year)) {
+                            $scope.movies.push($scope.addMovie);
+                        };
+                    }
+                    else {
+                        $window.alert('Enter title and year of a movie');
+                    };
+                };
+
+                $scope.removeThis = function (i) {
+                    $scope.movies.splice(i, 1);
+
+                };
+
+            });
+        </script>
+    </div>
+</body>
+
+</html>
