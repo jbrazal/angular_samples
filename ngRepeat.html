@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ng-repeat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller='myCtrl'>
+
+        <h3>Matrix Movies</h3>
+        <li ng-repeat='movie in movies'>{{movie.title}} ({{ movie.year }})</li>
+
+        <h3>Another JSON style</h3>
+        <li ng-repeat="name in [ {first: 'Paquito', second: 'Jazz'} , {first: 'Elias', second: 'Javier'} ]">{{ name.first }} {{ name.second }}</li>
+
+
+        <h3>Array Style</h3>
+        <table>
+            <tr>
+                <th>lowercase</th>
+                <th>UPPERCASE</th>
+            </tr>
+            <tr ng-repeat="i in ['one', 'two', 'three']">
+                <td>{{ i }}</td>
+                <td>{{ i | uppercase }}</td>
+
+            </tr>
+        </table>
+
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller('myCtrl', function ($scope) {
+
+                $scope.movies = [
+                    { title: 'The Matrix', year: '1999' },
+                    { title: 'The Matrix Reloaded', year: '2003' },
+                    { title: 'The Matrix Revolutions', year: '2003' }
+                ];
+
+            });
+        </script>
+    </div>
+</body>
+
+</html>
