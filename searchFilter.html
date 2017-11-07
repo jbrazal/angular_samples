@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <style>
+        .container {
+            float: left;
+            padding-left: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller='myCtrl'>
+
+        <label>Search: <input ng-model="searchText"></label>
+        <br>
+        <br>
+        <section ng-repeat="movie in movies | filter:searchText">
+            <label> {{ movie.title }} </label>
+        </section>
+
+
+        <script>
+            angular.module("myApp", [])
+                .controller('myCtrl', function ($scope) {
+
+                    $scope.movies = [
+                        { title: 'Lord of the Rings' },
+                        { title: 'Harry Potter' },
+                        { title: 'When Harry Met Sally' },
+                        { title: 'Before Sunrise, Before Sunset' },
+                        { title: 'Star Wars' }
+                    ];
+
+                });
+        </script>
+    </div>
+</body>
+
+</html>
