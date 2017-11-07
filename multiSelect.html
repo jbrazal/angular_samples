@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi Select</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <style>
+        .container{float: left; padding-left:20px}
+
+    </style>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller='myCtrl'>
+
+    <div class="container"><select name="watched" id="" ng-model="moviesWatched" ng-options="movie as movie.title for movie in movies" multiple></select>
+    </div>
+    <div class="container"> 
+        <li ng-repeat="w in moviesWatched">{{ w.title }}</li>
+</div>
+        <script>
+            angular.module("myApp", [])   
+            .controller('myCtrl', function ($scope) {
+
+                $scope.movies = [ 
+                    { id: 1 , title: 'Lord of the Rings', show: false},
+                    { id: 2 , title: 'Harry Potter', show: false},
+                    { id: 3 , title: 'When Harry Met Sally', show: false},
+                    { id: 4 , title: 'Before Sunrise, Before Sunset', show: false},
+                    { id: 5 , title: 'Star Wars', show: false},
+                ];
+
+                $scope.moveisWatched = [];
+
+            });
+        </script>
+    </div>
+</body>
+
+</html>
