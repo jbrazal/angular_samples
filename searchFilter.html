@@ -15,11 +15,18 @@
 <body>
     <div ng-app="myApp" ng-controller='myCtrl'>
 
-        <label>Search: <input ng-model="searchText"></label>
+        
+
+<span ng-repeat="movie in movies">
+  <input type="checkbox"  id="{{movie.id}}"  ng-model="watched[$index]">
+  <label for="{{ movie.id }}">{{ movie.title }} </label>
+  <br>
+</span>
+
         <br>
         <br>
-        <section ng-repeat="movie in movies | filter:searchText">
-            <label> {{ movie.title }} </label>
+        <section ng-repeat="movie in movies  ">
+            <label ng-show=""> {{ movie.title }} </label>
         </section>
 
 
@@ -28,11 +35,11 @@
                 .controller('myCtrl', function ($scope) {
 
                     $scope.movies = [
-                        { title: 'Lord of the Rings' },
-                        { title: 'Harry Potter' },
-                        { title: 'When Harry Met Sally' },
-                        { title: 'Before Sunrise, Before Sunset' },
-                        { title: 'Star Wars' }
+                        { id: 'm1' ,visible: 'yes', title: 'Lord of the Rings' },
+                        { id: 'm2' ,visible: 'yes', title: 'Harry Potter' },
+                        { id: 'm3' ,visible: 'yes', title: 'When Harry Met Sally' },
+                        { id: 'm4' ,visible: 'yes', title: 'Before Sunrise, Before Sunset' },
+                        { id: 'm5' ,visible: 'yes', title: 'Star Wars' }
                     ];
 
                 });

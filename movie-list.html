@@ -27,7 +27,7 @@
         <button ng-click="addthis()">Add</button>
 
         <li ng-repeat='movie in movies track by $index'>{{movie.title}} ({{ movie.year }})
-            <button ng-click='removeThis()'>-</button>
+            <button ng-click='removeThis($index)'>-</button>
         </li>
 
 
@@ -46,6 +46,8 @@
                     if (new_entry) {
                         if ((new_entry.title) && (new_entry.year)) {
                             $scope.movies.push($scope.addMovie);
+							
+							
                         };
                     }
                     else {
